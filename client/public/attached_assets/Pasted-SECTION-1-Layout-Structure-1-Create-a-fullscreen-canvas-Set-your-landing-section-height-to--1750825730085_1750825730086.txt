@@ -1,0 +1,103 @@
+SECTION 1: Layout & Structure
+🟦 1. Create a fullscreen canvas:
+
+Set your landing section height to 100vh (100% of viewport height).
+
+Ensure no scrollbars are visible on load.
+
+Use a flex container to center the content both vertically and horizontally.
+
+🟪 2. Apply a layered visual background:
+
+Insert a portrait image (preferably side profile) as a full-screen background.
+
+The image should have:
+
+Heavy blur or double exposure styling
+
+A mix of red, blue, and purple color overlays
+
+Slight opacity and motion blur effect, mimicking long-exposure photography
+
+🟫 3. Add a transparent grain overlay texture:
+
+Overlay a subtle grain pattern across the entire screen.
+
+It should be barely visible but give a tactile, film-like quality.
+
+Use PNG or CSS texture pattern (e.g. from TransparentTextures.com).
+
+✳️ SECTION 2: Typography & Layout Composition
+🟧 4. Main Headline — split and bold:
+
+Use ultra-bold sans-serif font (e.g. Space Grotesk, Suisse Int'l, or Neue Montreal)
+
+Line 1: “Digital” — left aligned or center
+
+Line 2: “Design Studio” — stacked below with matching font weight
+
+🟨 5. Apply dynamic color fill to text:
+
+Add a gradient fill (e.g. yellow → turquoise → orange) to the headline text.
+
+This should not be a solid color — the gradient should move slightly on scroll or hover if possible.
+
+The result should feel like colorful lighting painted across the typography.
+
+🟩 6. Supporting Text Elements:
+
+Place a small paragraph in bottom-left corner with 2–3 lines describing the value proposition:
+
+e.g. “We create digital designs that help brands move faster and convert better.”
+
+Set in small white text, thin font weight, max 3 lines
+
+Place a small block of 4 service tags on the right-hand side, vertically stacked (e.g. UX/UI, Development)
+
+These should be white, unembellished, and calm — to balance the bold headline
+
+✳️ SECTION 3: UI Elements & Navigation
+🟦 7. Top Navigation Bar (Fixed):
+
+Align the following across the top of the screen:
+
+Top-left: “LYNIQ” logo (replace with “PITCHCRAFT”) in all caps
+
+Center: Page links (e.g. “ABOUT”, “PROJECTS”, “CONTACT”) — spaced evenly, small, white text
+
+Top-right: “MENU” in uppercase, bold font — aligned flush right
+
+🟩 8. Mid-header data tag (optional):
+
+Place a turquoise number in brackets in the center-top navigation, e.g. (17)
+
+This indicates number of projects and adds personality to the header
+
+Use a contrasting neon/turquoise color for pop
+
+✳️ SECTION 4: Transitions & Animations
+🟫 9. Page Load Entrance:
+
+Fade in the entire background image on load with a slight delay (0.5s–1s)
+
+Animate headline and subtext to slide upward slightly as they appear
+
+Side service tags and paragraph text can fade in with staggered delay
+
+🟧 10. Typography motion:
+
+Subtle parallax or scale animation on scroll or mouse movement (optional)
+
+Hover states on menu text can use opacity or underline animations
+
+✳️ SECTION 5: Responsive Design
+📱 11. Mobile Responsiveness:
+
+Stack “Digital” and “Design Studio” vertically, center-aligned
+
+Reduce font sizes proportionally
+
+Move supporting paragraph to below the text block
+
+Convert top nav into a hamburger menu for small screens
+

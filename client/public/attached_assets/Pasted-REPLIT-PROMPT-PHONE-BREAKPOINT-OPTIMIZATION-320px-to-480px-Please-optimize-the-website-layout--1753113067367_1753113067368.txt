@@ -1,0 +1,60 @@
+REPLIT PROMPT — PHONE BREAKPOINT OPTIMIZATION (320px to 480px):
+
+Please optimize the website layout and styles specifically for mobile phones only, targeting screens between 320px and 480px wide. These changes must be wrapped inside a dedicated mobile-only breakpoint and must not cascade into tablet or desktop views.
+
+Target Devices / Screen Sizes:
+	•	iPhone SE: 320px
+	•	iPhone 12/13/14: 390px
+	•	Pixel 5: 393px
+	•	Samsung Galaxy S20: 412px
+	•	iPhone 14 Pro Max: 430px
+	•	Max width: 480px
+
+⸻
+
+🔧 THINGS TO FIX (PHONE ONLY)
+
+1. HERO SECTION
+	•	Ensure headline, subheadline, and CTA button are fully visible and don’t overflow.
+	•	Prevent horizontal scrolling.
+	•	Keep supporting text from overlapping with images or background.
+
+2. TEXT & TYPE
+	•	Set minimum font size to 16px for body text.
+	•	Maintain proper line-height (e.g., 1.4–1.6) for readability on small screens.
+
+3. BUTTONS & TAP TARGETS
+	•	All interactive elements (buttons, links, icons) must have a minimum tap area of 44x44px.
+	•	Add spacing between tappable elements to avoid mis-taps.
+
+4. IMAGES & LAYOUT
+	•	Images should use max-width: 100% and keep correct aspect ratio.
+	•	Avoid image distortion or cropping on narrow screens.
+	•	Prevent layout shifts by defining width and height attributes or using object-fit.
+
+5. NAVIGATION MENU
+	•	Hamburger icon should not be flush with the screen edge — add at least 16px padding.
+	•	Ensure mobile menu overlay displays instantly and without misalignment.
+
+6. ANIMATIONS (Phone Only)
+	•	Minimize large or CPU-heavy animations.
+	•	Ensure all animations (fade-ins, sliding text, etc.) run smoothly at 60fps.
+	•	Avoid scroll-based parallax or hover effects that don’t work well on mobile.
+	•	Use prefers-reduced-motion media query where needed.
+
+7. VIEWPORT
+	•	Confirm the following meta tag is present in <head>:
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+8. ACCESSIBILITY
+	•	Add alt text to all non-decorative images.
+	•	Ensure visible focus indicators for all interactive elements (buttons, links).
+
+⸻
+
+Please wrap all these changes within the following media query:
+
+@media (max-width: 480px) {
+  /* Apply mobile-specific styles here */
+}

@@ -1,0 +1,105 @@
+Perfect — here's a **detailed Replit prompt** that instructs your developer or AI assistant to **fix all Hero section issues** (logo, alignment, scaling, blend modes, text hierarchy) **breakpoint by breakpoint**, with **no overlapping media queries**.
+
+---
+
+### ✅ FINAL REPLIT PROMPT (Copy-Paste Ready)
+
+> 🚧 **Objective:** Fix all layout, scaling, and visual inconsistencies in the **Hero Section** of [https://www.pitchcraft.global](https://www.pitchcraft.global) across **all breakpoints**, ensuring each breakpoint is handled **independently**, with **no shared or cascading styles** between them.
+>
+> ---
+>
+> ### 🧱 General Setup (for all breakpoints):
+>
+> * Wrap all hero content inside a `max-width: 1440px` container.
+> * Center the container using `margin: 0 auto; padding-left/right: 5vw`.
+> * Use `flex` or `grid` for internal alignment.
+> * All font sizes and spacings should use `clamp()` or be defined **per breakpoint**, never globally.
+> * Ensure **`mix-blend-mode: exclusion`** is properly applied to the “PITCHCRAFT” text and not overridden or blocked by layering issues. Use `z-index` and avoid `isolation: isolate` or overly opaque wrappers.
+>
+> ---
+>
+> ### 📱 Breakpoint 1: `max-width: 480px` (Small smartphones)
+>
+> * Scale down "pc" logo to **40% of viewport width**
+> * Tagline: center-align, font-size `clamp(0.8rem, 4vw, 1.2rem)`
+> * "PITCHCRAFT": font-size `clamp(2rem, 6vw, 3.5rem)`
+> * Navigation hidden or inside a hamburger menu
+> * Ensure blend mode is still visible (text not placed on white)
+>
+> ---
+>
+> ### 📱 Breakpoint 2: `481px–767px` (Standard smartphones)
+>
+> * "pc" logo at 35% of viewport width
+> * Tagline spacing increased by `margin-top: 1.5rem`
+> * PITCHCRAFT text: `clamp(3rem, 7vw, 4rem)`
+> * Subtext: centered, `clamp(0.8rem, 2.5vw, 1.2rem)`
+> * Check `mix-blend-mode: exclusion` is still visible
+>
+> ---
+>
+> ### 📱 Breakpoint 3: `768px–1023px` (Tablets)
+>
+> * Logo: reduce slightly to 30% width, push top left
+> * Nav bar: inline with bigger padding, readable at `1rem–1.2rem`
+> * Tagline and subtext should maintain visual balance
+> * PITCHCRAFT: `clamp(3.5rem, 6vw, 5rem)`
+> * Blend mode must continue working
+>
+> ---
+>
+> ### 💻 Breakpoint 4: `1024px–1279px` (Small laptops)
+>
+> * Center “pc” logo horizontally, scale to 20% width
+> * Increase tagline spacing; use `1.4rem` font size
+> * PITCHCRAFT text: `clamp(4rem, 5vw, 6rem)`
+> * Nav font-size: `clamp(0.9rem, 1.5vw, 1.2rem)`
+> * Ensure all elements are **visually centered and aligned**
+>
+> ---
+>
+> ### 💻 Breakpoint 5: `1280px–1439px` (Standard desktop)
+>
+> * Logo: scale to 18% width
+> * Tagline: top-aligned beneath logo with 2rem spacing
+> * PITCHCRAFT: `clamp(5rem, 6vw, 6.5rem)`
+> * Subtext: `1.4rem`, spread across full width
+> * Recheck blend mode visibility over background
+>
+> ---
+>
+> ### 🖥️ Breakpoint 6: `1440px–1919px` (Large desktop)
+>
+> * Set strict `max-width: 1440px` container
+> * Logo size: 16% of viewport width
+> * Nav bar: increase spacing between links, use `1.2rem`–`1.5rem`
+> * Main text: `clamp(5rem, 6vw, 7rem)` max
+> * Subtext: visible but not cramped
+> * Blend mode **must be tested with high-contrast backgrounds**
+>
+> ---
+>
+> ### 🖥️ Breakpoint 7: `1920px–2559px` (Ultrawide monitors)
+>
+> * Prevent full stretching: hard cap `max-width: 1440px`
+> * Align all elements to center grid
+> * Avoid overscaling: cap PITCHCRAFT at `7rem max`
+> * Logo at 12% width, tagline with `2rem` spacing
+> * Subtext: `1.6rem`, equally spaced and centered
+>
+> ---
+>
+> ### 🖥️ Breakpoint 8: `2560px and above` (2K/4K displays)
+>
+> * Cap all element widths to prevent stretching
+> * Use `vw` or `clamp()` for responsive typography, but set **hard maximums**:
+>
+>   * PITCHCRAFT: max `7rem`
+>   * Logo: max `300px`
+>   * Tagline: max `1.8rem`
+> * Center container with generous margins (`padding-left/right: 10vw`)
+> * Ensure blend mode still applies and is visually meaningful
+
+---
+
+Would you like a matching CSS scaffold that implements these cleanly in code?

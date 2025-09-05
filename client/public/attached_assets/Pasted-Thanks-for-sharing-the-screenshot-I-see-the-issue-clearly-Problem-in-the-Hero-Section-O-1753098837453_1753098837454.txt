@@ -1,0 +1,48 @@
+Thanks for sharing the screenshot — I see the issue clearly.
+
+### 🧾 Problem in the Hero Section:
+
+On your 16" MacBook Pro (and likely on other wide screens):
+
+* The **"pc" logotype** and **navigation** are pushed into odd positions.
+* The **tagline** (“Where Mood meets Momentum”) and **subheadline** are slightly misaligned.
+* The **PITCHCRAFT** text overlaps the motorbike and the astronaut in a way that feels unbalanced, possibly due to absolute positioning or scaling not adjusting proportionally.
+
+---
+
+### ✅ Suggested Fix Prompt for Replit (to correct all breakpoints):
+
+> 🔧 **Prompt to fix Hero Section sizing and layout across all breakpoints:**
+>
+> * Please revise the **Hero section layout** so it remains balanced and correctly scaled across **all screen widths** — from 320px wide phones to 2560px+ ultra-wide monitors, including 16" MacBooks.
+>
+> * The issues I’m seeing:
+>
+>   * The **logo (pc)** and **tagline** are oversized and misaligned on large screens.
+>   * The **PITCHCRAFT** title scales too large and overlaps foreground elements.
+>   * Layout and positioning are not consistent across breakpoints.
+>
+> * I need:
+>
+>   1. **Container widths** and padding to be percentage-based or max-width limited (`max-width: 1440px; margin: 0 auto`) so text and logos don’t stretch out on large screens.
+>   2. **Text sizes** to be responsive using `clamp()` or `calc()` to scale smoothly but avoid oversizing:
+>
+>      ```css
+>      font-size: clamp(2rem, 5vw, 6rem);
+>      ```
+>   3. **Media queries** to control layout at:
+>
+>      * `max-width: 480px` – phones
+>      * `481px–768px` – tablets
+>      * `769px–1024px` – laptops
+>      * `1025px–1440px` – desktops
+>      * `1441px–1920px+` – large screens
+>   4. Ensure all **elements scale proportionally** and remain centered/aligned at each size.
+>
+> * Bonus: If using Framer Motion or GSAP, ensure animations don’t cause jumpy scaling at different breakpoints.
+>
+> Please apply this to **all elements in the Hero section**, not just desktop.
+
+---
+
+Let me know if you'd like the exact CSS rules or if you want me to help you draft a Framer-compatible adjustment instead.

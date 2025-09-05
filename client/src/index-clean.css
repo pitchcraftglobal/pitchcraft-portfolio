@@ -1,0 +1,2460 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/* Load Druk Wide and Clash Display fonts */
+@font-face {
+  font-family: 'Druk Wide';
+  src: url('/DrukWide-Medium-Trial_1750788936738.otf') format('opentype');
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/ClashDisplay-Bold_1751182157275.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Modal Full Screen Override */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+[data-dialog-overlay] {
+  z-index: 9998 !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+}
+
+[data-dialog-content] {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  /* transform: none !important; */
+  max-width: none !important;
+  max-height: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #000 !important;
+  z-index: 9999 !important;
+  overflow: hidden !important;
+}
+
+/* Custom scrollbar for portfolio modal */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Modal scroll fixes */
+.modal-scroll-container {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
+}
+
+/* Prevent body flickering during modal transitions */
+body {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Enhanced backdrop blur support */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Mobile-optimized ticker with hardware acceleration */
+.ticker-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-container::before,
+.ticker-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2rem;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ticker-container::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0a0a, transparent);
+}
+
+.ticker-container::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0a0a, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  white-space: nowrap;
+  will-change: transform;
+  animation: ticker-move 60s linear infinite;
+}
+
+.ticker-track.reverse {
+  animation: ticker-move-reverse 65s linear infinite;
+}
+
+.ticker-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 2rem;
+}
+
+.ticker-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.ticker-logo:hover {
+  opacity: 1;
+}
+
+/* Hardware accelerated animations for mobile */
+@keyframes ticker-move {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ticker-move-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Mobile-specific circular text animation */
+@keyframes spin-mobile {
+  0% {
+    transform: rotate(0deg) translateZ(0);
+  }
+  100% {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* NEW PLUS ICONS STYLING */
+.new-plus-icon {
+  font-weight: 100 !important;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 1.6rem !important;
+  line-height: 1 !important;
+  color: #ffffff !important;
+  display: block !important;
+  font-style: normal !important;
+  text-transform: none !important;
+}
+
+/* Glitch animation for plus signs */
+@keyframes glitch {
+  0%, 85% {
+    transform: translate(0, 0) scale(1) rotate(var(--plus-rotation, 0deg));
+    opacity: 1;
+    filter: none;
+  }
+  86% {
+    transform: translate(-5px, 3px) scale(1.15) rotate(calc(var(--plus-rotation, 0deg) + 8deg));
+    opacity: 0.6;
+    filter: blur(0.5px);
+  }
+  87% {
+    transform: translate(6px, -4px) scale(0.85) rotate(calc(var(--plus-rotation, 0deg) - 5deg));
+    opacity: 1;
+    filter: none;
+  }
+  88% {
+    transform: translate(-3px, 5px) scale(1.1) rotate(calc(var(--plus-rotation, 0deg) + 3deg));
+    opacity: 0.5;
+    filter: blur(0.3px);
+  }
+  89% {
+    transform: translate(4px, -3px) scale(0.9) rotate(var(--plus-rotation, 0deg));
+    opacity: 1;
+    filter: none;
+  }
+  90% {
+    transform: translate(-6px, 2px) scale(1.12) rotate(calc(var(--plus-rotation, 0deg) - 7deg));
+    opacity: 0.7;
+    filter: blur(0.4px);
+  }
+  91% {
+    transform: translate(3px, 6px) scale(0.88) rotate(calc(var(--plus-rotation, 0deg) + 9deg));
+    opacity: 1;
+    filter: none;
+  }
+  92% {
+    transform: translate(-2px, -4px) scale(1.05) rotate(calc(var(--plus-rotation, 0deg) - 2deg));
+    opacity: 0.8;
+    filter: blur(0.2px);
+  }
+  93% {
+    transform: translate(5px, 3px) scale(0.95) rotate(var(--plus-rotation, 0deg));
+    opacity: 1;
+    filter: none;
+  }
+  94% {
+    transform: translate(-4px, -2px) scale(1.08) rotate(calc(var(--plus-rotation, 0deg) + 4deg));
+    opacity: 0.9;
+    filter: blur(0.1px);
+  }
+  95%, 100% {
+    transform: translate(0, 0) scale(1) rotate(var(--plus-rotation, 0deg));
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.mobile-circular-text {
+  will-change: transform !important;
+}
+
+/* Mobile ticker optimizations */
+@media (max-width: 768px) {
+  .ticker-track {
+    animation-duration: 60s !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+  
+  .ticker-track.reverse {
+    animation-duration: 65s !important;
+  }
+  
+  .ticker-container {
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+  }
+  
+  .ticker-item {
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+  }
+  
+  /* Fallback for reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none !important;
+    }
+    
+    .mobile-circular-text {
+      animation: none !important;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .ticker-container {
+    height: 5rem;
+  }
+  .ticker-item {
+    width: 4rem;
+    height: 2.5rem;
+  }
+  .ticker-track {
+    gap: 2.5rem;
+  }
+  .ticker-container::before,
+  .ticker-container::after {
+    width: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ticker-container {
+    height: 6rem;
+  }
+  .ticker-item {
+    width: 5rem;
+    height: 3rem;
+  }
+  .ticker-track {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ticker-container {
+    height: 7rem;
+  }
+  .ticker-item {
+    width: 6rem;
+    height: 4rem;
+  }
+  .ticker-track {
+    gap: 4rem;
+  }
+}
+
+/* Footer PITCHCRAFT text sizing override */
+footer .pitchcraft-footer-text {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: 0.02em !important;
+  color: white !important;
+}
+
+@media (min-width: 768px) {
+  footer .pitchcraft-footer-text {
+    font-size: 24px !important;
+  }
+}
+
+/* Contact section email and phone text sizing */
+.contact-detail-text {
+  font-size: 18px !important;
+  font-family: 'Clash Display', sans-serif !important;
+  font-weight: 700 !important;
+  color: #eb5428 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+@media (min-width: 768px) {
+  .contact-detail-text {
+    font-size: clamp(18px, 4vw, 3.5rem) !important;
+  }
+}
+
+/* Footer text sizing */
+.footer-text-small {
+  font-size: 14px !important;
+}
+
+@media (min-width: 768px) {
+  .footer-text-small {
+    font-size: 14px !important; /* Keep 14px on desktop too */
+  }
+}
+
+/* Framer Motion ticker styles */
+.motion-ticker-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.motion-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+}
+
+.motion-brand-card {
+  flex-shrink: 0;
+  width: 6rem;
+  height: 4rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+.motion-brand-image {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  filter: brightness(1) contrast(1.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive motion ticker */
+@media (max-width: 640px) {
+  .motion-brand-card {
+    width: 4rem;
+    height: 2.5rem;
+  }
+  .motion-ticker-track {
+    gap: 1.5rem;
+  }
+  .motion-ticker-container {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .motion-brand-card {
+    width: 7rem;
+    height: 4.5rem;
+  }
+  .motion-ticker-track {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .motion-brand-card {
+    width: 8.5rem;
+    height: 5.5rem;
+  }
+  .motion-ticker-track {
+    gap: 3.5rem;
+  }
+}
+
+@layer base {
+  :root {
+    --deep-black: 10 10 10;
+    --orange: 235 84 40;
+    --white: 255 255 255;
+    --accent-orange: 235 84 40;
+  }
+}
+
+/* Deep black custom color for consistent branding */
+.bg-deep-black {
+  background-color: #0a0a0a;
+}
+
+/* Custom cursor for blend mode sections */
+.cursor-blend-eye {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>') 12 12, auto;
+}
+
+/* Blend mode utilities */
+.blend-exclusion {
+  mix-blend-mode: exclusion !important;
+  isolation: auto;
+}
+
+/* Ensure proper stacking context for blend modes */
+.hero-content {
+  isolation: isolate;
+}
+
+.hero-text-blend {
+  mix-blend-mode: exclusion !important;
+  position: relative;
+  z-index: 15;
+  isolation: auto;
+}
+
+/* Mobile-specific blend mode fixes */
+@supports (mix-blend-mode: exclusion) {
+  .hero-text-blend {
+    mix-blend-mode: exclusion !important;
+  }
+}
+
+/* Fallback for browsers that don't support blend modes */
+@supports not (mix-blend-mode: exclusion) {
+  .hero-text-blend {
+    color: #00ffff !important;
+    /* Cyan fallback */
+  }
+}
+
+/* Anti-screenshot protection removed - was causing flickering */
+
+/* Image protection simplified - no more pointer blocking */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Re-enable pointer events for interactive elements */
+button,
+a,
+input,
+textarea,
+select {
+  pointer-events: auto;
+}
+
+video {
+  -webkit-user-drag: none;
+}
+
+/* Text selection re-enabled for better user experience */
+
+/* Re-enable text selection for input fields */
+input,
+textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+
+
+/* ==============================================
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM
+   Complete coverage for all screen sizes
+   ============================================== */
+
+/* Base responsive styles for all screen sizes */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers are responsive */
+.container,
+.max-w-7xl,
+.max-w-6xl,
+.max-w-5xl,
+.max-w-4xl {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+/* Responsive grid system */
+@media (min-width: 640px) {
+  .sm\\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sm\\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .md\\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .md\\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lg\\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lg\\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .lg\\:grid-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\\:grid-cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Services section text containers - uniform structure */
+.services-text-container {
+  width: 100% !important;
+  height: 120px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2rem !important;
+}
+
+.services-text-container:last-child {
+  margin-bottom: 0 !important;
+}
+
+.services-text-line {
+  /* Removed all font-size overrides to allow inline styles */
+  white-space: nowrap !important;
+  text-align: center !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  transform-origin: center !important;
+}
+
+.services-container-fix {
+  overflow: visible !important;
+  word-break: normal !important;
+  padding: 0 1rem !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .services-text-container {
+    height: 60px !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .services-mobile-text {
+    font-size: 1.2rem !important;
+    font-weight: 1000 !important;
+    /* Mobile animation performance optimizations */
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000 !important;
+    -webkit-perspective: 1000 !important;
+    will-change: transform, opacity !important;
+  }
+
+  .test-mobile-font {
+    font-size: 1.2rem !important;
+    border: 2px solid yellow !important;
+  }
+
+  .services-mobile-container {
+    min-height: 40vh !important;
+    max-height: 50vh !important;
+    padding: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* Enable hardware acceleration for mobile */
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+  }
+  
+  /* Force hardware acceleration on mobile for animation elements */
+  .services-text-container,
+  .services-text-line {
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* Mobile navigation height optimization */
+@media (max-width: 1023px) {
+  nav {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+}
+
+
+
+/* Portfolio section responsive fixes */
+@media (max-width: 768px) {
+  #pitch-decks {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    overflow-x: hidden !important;
+  }
+
+  #pitch-decks > div {
+    max-width: 100vw !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  #pitch-decks .grid {
+    gap: 0.75rem !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #pitch-decks .group {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #pitch-decks .aspect-\[16\/9\] {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* AI Explorations section responsive fixes */
+@media (max-width: 768px) {
+  #ai-explorations {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    overflow-x: hidden !important;
+  }
+
+  #ai-explorations > div {
+    max-width: 100vw !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  #ai-explorations .grid {
+    gap: 0.75rem !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #ai-explorations .group {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #ai-explorations .aspect-\[16\/10\] {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* On mobile, AI exploration cards should match portfolio cards */
+  #ai-explorations .grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  /* Ensure AI exploration cards stay within boundaries */
+  #ai-explorations .relative {
+    overflow: hidden !important;
+  }
+  
+  /* Fix overlays to respect container boundaries */
+  #ai-explorations .absolute.inset-0,
+  #ai-explorations .absolute.bottom-0 {
+    border-radius: inherit;
+  }
+
+  /* Ensure images fill the entire container */
+  #ai-explorations img {
+    min-height: 100% !important;
+    min-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  /* Fix consistent spacing for text content */
+  #ai-explorations h3 {
+    min-height: 3rem !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: 1.5rem !important;
+  }
+
+  /* Ensure consistent content overlay height */
+  #ai-explorations .absolute.bottom-0 {
+    min-height: auto !important;
+  }
+}
+
+/* Ensure no horizontal overflow on any screen size */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* About section mobile responsiveness */
+@media (max-width: 768px) {
+  #about {
+    padding: 4rem 1rem !important;
+  }
+
+  #about .max-w-7xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  #about .grid {
+    display: block !important;
+    gap: 0 !important;
+  }
+
+  #about .grid>div:first-child {
+    margin-bottom: 2rem !important;
+  }
+
+  #about h2 {
+    font-size: 24px !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+
+  /* Portfolio section titles mobile override - MAXIMUM specificity */
+  section#pitch-decks h1[style*="fontSize"],
+  section#ai-explorations h1[style*="fontSize"],
+  #pitch-decks h1,
+  #ai-explorations h1 {
+    font-size: 24px !important;
+  }
+
+  /* Mobile section titles - 24px font size */
+  html body section div .mobile-title-26,
+  html body .mobile-title-26,
+  .mobile-title-26,
+  h2.mobile-title-26,
+  div.mobile-title-26,
+  motion-h2.mobile-title-26,
+  .mobile-title-26[style],
+  .mobile-title-26[style*="fontSize"],
+  .mobile-title-26[style*="clamp"],
+  .mobile-title-26[style*="textAlign"] {
+    font-size: 24px !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* About section mobile spacing fix - reduce internal container spacing */
+  #about .max-w-7xl {
+    padding: 0 16px !important;
+    margin: 0 auto !important;
+  }
+
+  /* About section navigation mobile spacing */
+  #about .mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Contact and About section titles */
+  section#contact h2[style*="fontSize"],
+  #contact h2,
+  #about h2 {
+    font-size: 24px !important;
+  }
+
+  /* EXCLUDE project card titles from the 28px override */
+  #pitch-decks h3,
+  #ai-explorations h3,
+  .portfolio-card h3,
+  .portfolio-card-title {
+    font-size: inherit !important;
+  }
+
+  /* Force VIEW text and arrow visibility on mobile */
+  #pitch-decks .flex.items-center.gap-3.flex-shrink-0 span,
+  #pitch-decks .flex.items-center.gap-3.flex-shrink-0 svg {
+    color: rgb(251 146 60) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+  }
+
+  #about p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  /* Mobile logo positioning */
+  #about .flex.justify-center {
+    justify-content: center !important;
+    margin-top: 2rem !important;
+  }
+
+  #about .relative.w-48 {
+    width: 14rem !important;
+    height: 14rem !important;
+  }
+}
+
+/* Additional responsive breakpoints for comprehensive coverage */
+@media (min-width: 320px) and (max-width: 480px) {
+
+  /* Extra small mobile devices */
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-section {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  /* Force slideshow images to fill full mobile viewport */
+  .hero-slideshow-image {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .hero-content-container {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2rem 1rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 15 !important;
+    text-align: center !important;
+    isolation: isolate !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 10vw, 3rem) !important;
+    margin-bottom: 1.5rem !important;
+    z-index: 15 !important;
+  }
+
+  .hero-title.hero-text-blend {
+    mix-blend-mode: exclusion !important;
+    position: relative !important;
+    z-index: 15 !important;
+    isolation: auto !important;
+  }
+
+  .hero-services {
+    font-size: clamp(0.75rem, 3.5vw, 1rem) !important;
+  }
+
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+
+  /* Small mobile to phablet */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-section {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  /* Force slideshow images to fill full mobile viewport */
+  .hero-slideshow-image {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .hero-content-container {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 2rem 1.25rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 15 !important;
+    text-align: center !important;
+    isolation: isolate !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem) !important;
+    margin-bottom: 2rem !important;
+    z-index: 15 !important;
+  }
+
+  .hero-title.hero-text-blend {
+    mix-blend-mode: exclusion !important;
+    position: relative !important;
+    z-index: 15 !important;
+    isolation: auto !important;
+  }
+
+  .hero-services {
+    font-size: clamp(0.8rem, 4vw, 1.2rem) !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+
+  /* Tablet portrait */
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .hero-section {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  /* Force slideshow images to fill full tablet viewport */
+  .hero-slideshow-image {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .hero-content-container {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 3rem 2rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 15 !important;
+    text-align: center !important;
+    isolation: isolate !important;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 10vw, 5rem) !important;
+    margin-bottom: 2.5rem !important;
+    z-index: 15 !important;
+  }
+
+  .hero-title.hero-text-blend {
+    mix-blend-mode: exclusion !important;
+    position: relative !important;
+    z-index: 15 !important;
+    isolation: auto !important;
+  }
+
+  .hero-services {
+    font-size: clamp(1rem, 4vw, 1.4rem) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  /* Tablet landscape to small desktop */
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(4rem, 9vw, 7rem) !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+  /* Desktop standard */
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(6rem, 8vw, 10rem) !important;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+
+  /* Large desktop */
+  .container {
+    padding: 0 2.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(8rem, 7vw, 12rem) !important;
+  }
+}
+
+@media (min-width: 1921px) {
+
+  /* Ultra-wide and 4K displays */
+  .container {
+    padding: 0 3rem;
+    max-width: 2400px;
+  }
+
+  .hero-title {
+    font-size: clamp(10rem, 6vw, 16rem) !important;
+  }
+}
+
+/* Responsive images and media */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grid systems responsive by default */
+.grid {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Button and interactive element accessibility */
+button,
+a,
+[role="button"] {
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* Typography scaling system */
+.text-responsive {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+}
+
+.heading-responsive {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+.heading-large-responsive {
+  font-size: clamp(2rem, 8vw, 6rem);
+  line-height: 0.9;
+}
+
+/* Section padding responsive system */
+.section-padding {
+  padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+}
+
+/* Navigation responsive fixes */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+/* Mobile-specific responsive design */
+@media screen and (max-width: 768px) {
+
+  /* Global overflow and layout fixes */
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Hero section mobile layout */
+  .hero-section {
+    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  /* Mobile slideshow image positioning */
+  .hero-slideshow-image {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 4vw, 2rem);
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  /* PITCHCRAFT mobile title */
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin: 0 0 clamp(1.5rem, 4vw, 3rem) 0;
+    position: relative;
+    z-index: 15;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Mobile blend mode enforcement */
+  .hero-title.hero-text-blend {
+    mix-blend-mode: exclusion !important;
+    position: relative !important;
+    z-index: 15 !important;
+    isolation: auto !important;
+  }
+
+  /* Services text mobile */
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: clamp(0.75rem, 3.5vw, 1.2rem);
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0.9;
+    z-index: 20;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Mobile navigation optimization */
+  nav {
+    padding: 0.75rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  nav .flex,
+  nav>div,
+  nav .w-full {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* FIX PC LOGO SIZE - make it normal size */
+  nav img,
+  nav .h-8 {
+    height: 32px !important;
+    width: auto !important;
+    max-width: 32px !important;
+    object-fit: contain !important;
+  }
+
+  /* Navigation buttons and hamburger */
+  nav button {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+  }
+
+  /* Touch targets - minimum 44x44px */
+  .touch-target,
+  button,
+  a {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    margin: 4px !important;
+  }
+
+  /* Logo touch target */
+  nav img {
+    min-width: 44px;
+    min-height: 44px;
+    object-fit: contain;
+  }
+
+  /* Text and Typography Mobile Standards */
+  body,
+  p,
+  span,
+  div {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.4 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Images and Layout Mobile */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 4px;
+  }
+
+  /* Focus indicators for accessibility */
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #eb5428 !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Hide decorative plus signs on mobile for cleaner look */
+  .hero-plus,
+  .absolute.top-8,
+  .absolute.top-16,
+  .absolute.bottom-8 {
+    display: none !important;
+  }
+
+  /* Brands section mobile */
+  .brands-title,
+  section h2:not(#about h2):not(#services h2) {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    padding: 0 16px !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Brand logos sizing */
+  .brands-logo,
+  .w-20 {
+    width: 48px !important;
+    height: 32px !important;
+  }
+
+  /* Portfolio section mobile - make card content responsive */
+  #pitch-decks {
+    padding: 2rem 1rem !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  #pitch-decks .grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    width: 100% !important;
+  }
+
+  /* Portfolio card responsive content */
+  #pitch-decks .group {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Portfolio card image - responsive sizing */
+  #pitch-decks .relative.overflow-hidden.rounded-2xl {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+  }
+
+  #pitch-decks .relative.overflow-hidden.rounded-2xl img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Portfolio title responsive */
+  #pitch-decks h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Portfolio card header responsive */
+  #pitch-decks .flex.justify-between {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Portfolio genre text responsive */
+  #pitch-decks .text-orange-400 {
+    font-size: 0.875rem !important;
+    order: -1 !important;
+  }
+
+  /* Portfolio view button responsive */
+  #pitch-decks .flex.items-center.gap-3 {
+    display: none !important;
+  }
+
+  /* Contact section mobile */
+  .contact-content {
+    padding: 24px 16px !important;
+    text-align: center !important;
+  }
+
+  .contact-heading {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 32px !important;
+    word-wrap: break-word !important;
+  }
+
+  .contact-link {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    padding: 12px 8px !important;
+    min-height: 44px !important;
+    display: block !important;
+    text-decoration: none !important;
+    margin: 8px 0 !important;
+  }
+
+  /* AI Explorations section mobile */
+  .ai-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+
+  .ai-item {
+    aspect-ratio: 1 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+  }
+
+  /* Button spacing to prevent mis-taps */
+  .mobile-button-spacing>*+* {
+    margin-top: 16px !important;
+  }
+
+  /* General mobile container */
+  .mobile-container,
+  .max-w-7xl,
+  .container {
+    padding: 16px !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Section padding adjustments */
+  section {
+    padding: 16px 12px !important;
+  }
+
+  /* Prevent horizontal scrolling */
+  * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Brand ticker mobile - Force CSS animations to work */
+  #brands .flex.items-center.gap-12 {
+    animation: ticker-scroll 30s linear infinite !important;
+    will-change: transform !important;
+    display: flex !important;
+    gap: 3rem !important;
+  }
+
+  @keyframes ticker-scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  /* Brand ticker second row */
+  #brands .flex.items-center.gap-12:nth-of-type(2) {
+    animation: ticker-scroll-reverse 35s linear infinite !important;
+  }
+
+  @keyframes ticker-scroll-reverse {
+    0% {
+      transform: translateX(-33.333%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Force brand logos to be visible and properly sized */
+  #brands .w-16,
+  #brands .w-20,
+  .ticker-logo {
+    width: 5rem !important;
+    height: 3.5rem !important;
+    min-width: 5rem !important;
+    min-height: 3.5rem !important;
+    flex-shrink: 0 !important;
+    object-fit: contain !important;
+  }
+
+  /* Brand ticker containers must work */
+  #brands .relative.overflow-hidden {
+    overflow: hidden !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* REMOVE ALL ANIMATIONS EXCEPT SLIDESHOW AND SPECIFIED SECTIONS */
+  *:not(#brands *):not(.slideshow-image):not(.hero-slideshow *):not(.ticker *):not(#pitch-decks *):not(#ai-explorations *):not(#about *):not([data-testid="spin-test"]):not(.ticker-mobile):not(.ticker-mobile-reverse):not(.circular-text-mobile *) {
+    animation: none !important;
+    transition: none !important;
+    /* transform: none !important; DISABLED for mobile animations */
+  }
+  
+  /* Force mobile animations to work */
+  @media (max-width: 768px) {
+    .ticker-mobile, .ticker-mobile-reverse, .circular-text-mobile * {
+      transform: unset !important;
+      animation: unset !important;
+      transition: unset !important;
+    }
+  }
+
+  /* Re-enable animations only for slideshow and specified sections */
+  .slideshow-image,
+  .hero-slideshow img,
+  .ticker,
+  #pitch-decks,
+  #ai-explorations,
+  #brands,
+  #about,
+  .circular-text-mobile,
+  .ticker-mobile,
+  .ticker-mobile-reverse,
+  .ticker *,
+  #pitch-decks *,
+  #ai-explorations *,
+  #brands *,
+  #about * {
+    animation: initial !important;
+    transition: initial !important;
+    transform: initial !important;
+    animation-play-state: running !important;
+  }
+
+  /* Force brand Framer Motion animations to work on mobile - HIGHEST PRIORITY */
+  #brands [data-framer-motion],
+  #brands .motion-div,
+  #brands .motion-ticker-container,
+  #brands .motion-ticker-track,
+  #brands .motion-brand-card,
+  section#brands [data-framer-motion],
+  section#brands .motion-div,
+  section#brands .motion-ticker-container,
+  section#brands .motion-ticker-track,
+  section#brands .motion-brand-card {
+    animation: unset !important;
+    transition: unset !important;
+    transform: unset !important;
+    animation-play-state: running !important;
+    will-change: transform !important;
+  }
+
+  /* HIDE PLUS SIGNS ON MOBILE ONLY */
+  .plus-sign,
+  .hero-plus,
+  .decorative-plus {
+    display: none !important;
+  }
+  
+  /* ALWAYS SHOW HERO PLUS ICONS */
+  #hero .absolute {
+    display: block !important;
+  }
+  
+  /* FORCE THIN HERO PLUS ICONS */
+  #hero .absolute {
+    font-weight: 100 !important;
+    font-family: 'Helvetica Neue', Arial, sans-serif !important;
+    font-size: 1.8rem !important;
+    line-height: 1 !important;
+    font-style: normal !important;
+    text-transform: none !important;
+  }
+
+  /* COMPLETE CURSOR REMOVAL ON MOBILE */
+  * {
+    cursor: none !important;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+
+  /* TEMPORARILY DISABLED - DISABLE ALL FRAMER MOTION AND ANIMATIONS ON MOBILE EXCEPT BRANDS */
+  /*
+  [data-framer-motion]:not(#brands [data-framer-motion]):not(#brands *),
+  .motion-div:not(#brands .motion-div):not(#brands *),
+  .motion-section:not(#brands .motion-section):not(#brands *) {
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  */
+
+  /* Re-enable CSS animations for brand ticker only - MAXIMUM SPECIFICITY */
+  section#brands [data-framer-motion],
+  section#brands .motion-div,
+  section#brands .motion-ticker-container,
+  section#brands .motion-ticker-track,
+  section#brands .motion-brand-card,
+  section#brands .motion-ticker-container *,
+  section#brands .motion-ticker-track *,
+  section#brands .motion-brand-card * {
+    animation: unset !important;
+    transition: unset !important;
+    transform: unset !important;
+    will-change: transform !important;
+  }
+
+  /* HAMBURGER NAVIGATION FOR MOBILE */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .hamburger-menu {
+    display: flex !important;
+    flex-direction: column;
+    gap: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+  }
+
+  /* Layout & Responsiveness */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Section spacing and vertical layout */
+  section {
+    padding: 32px 16px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Responsive images and containers */
+  img,
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+
+  .container,
+  .max-w-7xl {
+    padding: 0 16px !important;
+    max-width: 100% !important;
+  }
+
+  /* Section spacing and flow */
+  section {
+    padding: 32px 16px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Typography improvements */
+  body,
+  p,
+  span,
+  div,
+  a {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Improved contrast for text */
+  .text-white {
+    color: #ffffff !important;
+  }
+
+  .text-black {
+    color: #000000 !important;
+  }
+
+  /* CTA Buttons and touch targets */
+  button,
+  a,
+  .touch-target {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 12px 16px !important;
+    margin: 8px 4px !important;
+    display: inline-block !important;
+    text-align: center !important;
+    border-radius: 4px !important;
+  }
+
+  /* Image responsiveness */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 4px !important;
+  }
+
+  /* Portfolio and grid layouts */
+  .grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+
+  /* Navigation mobile specific */
+  nav {
+    padding: 16px !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+  }
+
+  /* Mobile menu positioning */
+  .mobile-menu {
+    padding: 16px !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  /* Focus indicators for accessibility */
+  button:focus,
+  a:focus,
+  input:focus,
+  textarea:focus,
+  [tabindex]:focus {
+    outline: 3px solid #eb5428 !important;
+    outline-offset: 2px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Form elements */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    padding: 12px 16px !important;
+    border-radius: 4px !important;
+    border: 2px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Scroll indicator mobile */
+  .scroll-indicator {
+    bottom: 16px !important;
+    font-size: 16px !important;
+  }
+
+  /* Prevent layout shifts */
+  * {
+    box-sizing: border-box !important;
+  }
+
+  /* Specific section adjustments */
+  .hero-tagline {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+    padding: 0 16px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.2 !important;
+    margin: 16px 0 !important;
+    padding: 0 16px !important;
+    word-break: break-word !important;
+  }
+
+  .hero-services {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    margin-top: 16px !important;
+    padding: 0 16px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Contact section mobile */
+  .contact-content {
+    padding: 32px 16px !important;
+  }
+
+  .contact-heading {
+    font-size: 24px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .contact-link {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    padding: 16px 8px !important;
+    margin: 8px 0 !important;
+    display: block !important;
+  }
+
+  /* AI Explorations grid mobile */
+  .ai-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+
+  /* Brands/Clients section mobile */
+  .brands-section {
+    padding: 32px 16px !important;
+  }
+
+  .brands-title {
+    font-size: 20px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Marquee adjustments for mobile */
+  .marquee-container {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .marquee-content {
+    gap: 16px !important;
+  }
+
+  .brand-logo {
+    width: 60px !important;
+    height: 40px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Breakpoint 2: Large phones (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0 auto;
+  }
+
+  .hero-tagline {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #f5cec3;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    z-index: 25;
+  }
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Breakpoint 3: Tablets (768px - 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-tagline {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #f5cec3;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    z-index: 25;
+  }
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 8rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0 0 3rem 0;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Breakpoint 4: Small desktop (1024px - 1279px) */
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 10rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0 0 3rem 0;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Breakpoint 5: Medium desktop (1280px - 1439px) */
+@media screen and (min-width: 1280px) and (max-width: 1439px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 12rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0 0 4rem 0;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Breakpoint 6: Large desktop (1440px - 1919px) - MASTER LAYOUT FOR MACBOOK PRO 16" */
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10vw;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 1200;
+    font-size: 13rem;
+    color: white;
+    line-height: 0.8;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin: 0 0 4rem 0;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    position: relative;
+  }
+}
+
+/* Breakpoint 7: Large desktop (1920px - 2559px) */
+@media screen and (min-width: 1920px) and (max-width: 2559px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 16rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0 0 4rem 0;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Breakpoint 7: Ultra-wide (2560px and above) */
+@media screen and (min-width: 2560px) {
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-color: #000000;
+  }
+
+  .hero-content-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    width: 100%;
+    height: 100%;
+    max-width: 2200px;
+    margin: 0 auto;
+  }
+
+
+
+  .hero-title {
+    font-family: 'Druk Wide', 'Arial Black', 'Helvetica', sans-serif;
+    font-weight: 900;
+    font-size: 16rem;
+    color: white;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    mix-blend-mode: exclusion;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .hero-services {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    color: #f5cec3;
+    letter-spacing: 0.15em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 2000px;
+  }
+}
+
+/* End of isolated breakpoint system */
+
+/* Remove cursor on mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: none !important;
+  }
+}

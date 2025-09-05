@@ -1,0 +1,87 @@
+/* Mobile-first animations that actually work */
+
+/* Circular text animation */
+.circular-text-mobile {
+  animation: spin-smooth 20s linear infinite;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+@keyframes spin-smooth {
+  from {
+    transform: rotate(0deg) translateZ(0);
+    -webkit-transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(360deg) translateZ(0);
+    -webkit-transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* Simple ticker animation - Slower speeds */
+.ticker-mobile {
+  animation: slide-left 40s linear infinite;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+.ticker-mobile-reverse {
+  animation: slide-right 45s linear infinite;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+@keyframes slide-left {
+  from {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Force animations on mobile - Maximum priority */
+@media (max-width: 768px) {
+  .circular-text-mobile,
+  .ticker-mobile,
+  .ticker-mobile-reverse {
+    animation-play-state: running !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+  }
+}
+
+/* Override all conflicting styles */
+.circular-text-mobile {
+  animation: spin-smooth 20s linear infinite !important;
+}
+
+.ticker-mobile {
+  animation: slide-left 25s linear infinite !important;
+}
+
+.ticker-mobile-reverse {
+  animation: slide-right 30s linear infinite !important;
+}

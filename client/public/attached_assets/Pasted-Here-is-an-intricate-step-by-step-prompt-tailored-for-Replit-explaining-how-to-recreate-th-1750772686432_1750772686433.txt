@@ -1,0 +1,144 @@
+Here is an **intricate, step-by-step prompt** tailored for **Replit**, explaining how to recreate the **visual effects and transitions in the hero section** of the [Lyniq website](https://lyniq.framer.website/) as it loads:
+
+---
+
+## 🎯 Replit-Compatible Prompt:
+
+**Build a Floating, Cinematic Hero Section Inspired by Lyniq’s Landing Page**
+
+---
+
+### 🧩 Objective
+
+Create a visually immersive hero section that opens with a smooth fade-in and scale animation of a central object (or image), includes continuous floating motion, and integrates soft scroll-triggered parallax effects—all emulating the Lyniq website's polished behavior.
+
+---
+
+## 🔧 Step-by-Step Instructions
+
+---
+
+### 1. **Set Up the Hero Layout**
+
+* Create a full-screen hero section:
+
+  * Use `height: 100vh` and `width: 100%`
+  * Background: dark or black (`#0d0d0d` recommended)
+  * Center the content both vertically and horizontally using Flexbox or Grid.
+
+* Add two main layers inside:
+
+  * **Foreground text layer** (headline + CTA)
+  * **Central visual object** (image, SVG, or canvas-based 3D asset)
+
+---
+
+### 2. **Fade + Scale In On Page Load**
+
+* Apply an **entry animation** to both the central object and text:
+
+```css
+@keyframes fadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+```
+
+* Add this animation to the hero content on load:
+
+  * Duration: `1s`
+  * Easing: `ease-out`
+  * Delay: text slightly after the visual for a staggered feel
+
+---
+
+### 3. **Floating Motion on Central Visual**
+
+* Add a **looping keyframe animation** to the visual object that simulates floating:
+
+```css
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+```
+
+* Apply it with:
+
+  * `animation: float 5s ease-in-out infinite;`
+  * Optional: Add slight `rotateZ` or `rotateX` for added dimension
+
+---
+
+### 4. **Scroll-Responsive Parallax Shift**
+
+* As the user scrolls down:
+
+  * The hero visual should **translate upward slightly slower** than the scroll to create parallax depth.
+  * Use JavaScript `window.scrollY` to adjust transform on scroll:
+
+```js
+window.addEventListener('scroll', () => {
+  const scrollOffset = window.scrollY;
+  document.querySelector('.hero-object').style.transform = 
+    `translateY(${scrollOffset * 0.2}px)`;
+});
+```
+
+* This keeps the object feeling “anchored” in 3D space as the rest of the page moves.
+
+---
+
+### 5. **Text Layer Remains Focused Longer**
+
+* The foreground text (e.g., headline/CTA) should:
+
+  * Remain fixed or move slower on scroll to hold attention.
+  * Optionally use `position: sticky` for short duration before releasing
+
+```css
+.hero-text {
+  position: sticky;
+  top: 20vh;
+}
+```
+
+---
+
+### 6. **Refinement and Responsiveness**
+
+* Add smooth transition properties (`transition: all 0.3s ease-out;`) to hover or focus elements.
+* Ensure all effects degrade gracefully on smaller screens:
+
+  * Reduce floating animation distance
+  * Limit parallax or make it optional with media queries
+
+---
+
+### ✨ Bonus Enhancements (Optional)
+
+* Add blur or glow to the central object using `filter: blur(1px)` or `box-shadow`
+* Use a lightweight animated SVG or 3D model in place of a static image
+* Integrate a smooth scroll-down indicator (e.g., a bouncing arrow)
+
+---
+
+## 🖼️ Visual Summary
+
+| Layer       | Effect                        | Trigger        |
+| ----------- | ----------------------------- | -------------- |
+| Hero Visual | Fade + Scale In, then Float   | Page Load      |
+| Headline    | Staggered Fade/Slide In       | Page Load      |
+| Object      | Slow vertical parallax motion | Scroll Trigger |
+| Text        | Sticky + delayed movement     | Scroll Trigger |
+
+---
+
+Let me know if you want this built into HTML/CSS/JS files for direct use in Replit. I can also help you integrate frameworks like GSAP or Three.js if you want more advanced visuals!

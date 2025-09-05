@@ -1,0 +1,92 @@
+Objective
+Design a sleek, fully responsive website for Pitchcraft — a Mumbai-based visual design studio — with the visual sophistication and modern interactivity of the “Bronx Dark Portfolio” site.
+
+1. Overall Feel
+Dark theme with cinematic edge
+
+Bold typography with clean spacing
+
+Smooth transitions and hover effects
+
+Responsive layout for desktop, tablet, and mobile
+
+Scroll-based animations or fade-ins for content blocks
+
+2. Hero Section
+Studio name spaced out: p i t c hc r a f t
+
+Minimalist intro with fade-up animation:
+
+“PITCHCRAFT is a bespoke visual design studio established in Mumbai, India, where creating bold and cinematic pitch decks and mood boards tailored for commercials, documentaries, and films is the norm.”
+
+Tagline below with center-aligned stacked lines:
+
+css
+Copy
+Edit
+VISUALLY LOADED DECKS.  
+DESIGNED TO PITCH.  
+PRIMED TO WIN.
+3. About Section
+Smooth fade or slide-in text blocks:
+
+“Elevated by a collective experience of over 2 decades, our team combines a global perspective with a passion for visual storytelling. We pride ourselves on delivering high-impact designs that resonate with clients worldwide.”
+
+Layout similar to Bronx with one side showing text, the other showing motion visuals or parallax media
+
+4. Studio Info Section
+Bold monochrome text cards:
+
+objectivec
+Copy
+Edit
+BASED IN MUMBAI  
+AVAILABLE WORLDWIDE
+5. Services Section
+Use Bronx-style cards or floating labels with hover animations:
+
+visual research
+
+layout design
+
+AI image generation
+
+6. Clients Section
+Use a horizontal scroll or animated grid of logos under the heading:
+BRANDS WE’VE WORKED WITH
+
+Keep branding minimal but sophisticated
+
+7. Portfolio Section
+Grid or masonry layout of projects (at least 24)
+
+Each thumbnail should animate slightly on hover
+
+A lightbox/modal opens on click to view more
+
+Add a subtle “view our full portfolio” link at the bottom
+
+8. Navigation & Footer
+Sticky top navigation with simple scroll anchors
+
+Footer should match the Bronx style: minimal, with centered or left-aligned contact info and studio location
+
+9. Responsive Design Goals
+Desktop: Grid-based layout, immersive visuals
+
+Tablet: Reflow content for vertical readability
+
+Mobile: Stack sections, optimize font and touch targets
+
+Ensure all animations and hover states degrade gracefully
+
+10. Design Direction
+Dark mode aesthetic
+
+Cinematic, high-impact visuals
+
+Smooth parallax or fade-ins
+
+Sharp contrast in type hierarchy
+
+No clutter — every section should feel intentional

@@ -1,0 +1,115 @@
+REPLIT PROMPT — FULL MOBILE BREAKPOINT OPTIMIZATION (320px to 480px)
+
+Please optimize the website for phone screens only, targeting screen widths from 320px to 480px. These changes must be wrapped within the following media query and must not affect tablet or desktop breakpoints:
+
+@media (max-width: 480px) {
+  /* mobile-specific styles go here */
+}
+
+
+⸻
+
+🔧 1. LAYOUT & RESPONSIVENESS
+	•	Fix horizontal overflow issues. Ensure all content fits within the screen without side-scrolling.
+	•	Ensure the hero section text and CTA button are fully visible, centered, and not overlapped by images or backgrounds.
+	•	Add sufficient padding and spacing between sections and from screen edges.
+	•	Ensure all sections stack vertically and flow smoothly.
+
+⸻
+
+🔤 2. TYPOGRAPHY
+	•	Set minimum font size to 16px for body text to improve readability.
+	•	Use consistent line-height: 1.5 or higher.
+	•	Ensure text remains legible against backgrounds — adjust contrast where needed.
+
+⸻
+
+👆 3. BUTTONS & TAP TARGETS
+	•	Ensure all clickable elements are at least 44×44px.
+	•	Add spacing between touch targets to avoid accidental taps.
+	•	CTA buttons should be easily tappable and not clipped or overlapped.
+
+⸻
+
+🖼️ 4. IMAGES
+	•	Make all images responsive:
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+	•	Prevent image distortion using object-fit: cover where applicable.
+	•	Set explicit width and height or aspect ratio to prevent layout shifts during loading.
+
+⸻
+
+🍔 5. MOBILE NAVIGATION
+	•	Add 16px padding between the hamburger menu and screen edge.
+	•	Ensure the mobile menu opens immediately and overlays correctly.
+	•	Avoid visual overlap with hero or text content.
+
+⸻
+
+🖱️ 6. CURSOR COMPONENT (REMOVE ON MOBILE)
+	•	Disable custom cursor on mobile devices:
+
+@media (max-width: 480px) {
+  body {
+    cursor: default !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+
+⸻
+
+✨ 7. ANIMATIONS — REMOVE ALL EXCEPT SPECIFIED SECTIONS
+
+❌ Disable all animations site-wide:
+
+@media (max-width: 480px) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+✅ Keep animations only for:
+	•	.ticker (ticker sections)
+	•	#pitch-decks (Pitch Decks section)
+	•	#ai-explorations (AI Explorations section)
+
+Re-enable animations in those sections:
+
+@media (max-width: 480px) {
+  .ticker,
+  #pitch-decks,
+  #ai-explorations {
+    animation: initial !important;
+    transition: initial !important;
+  }
+}
+
+
+⸻
+
+🌐 8. VIEWPORT TAG (HTML HEAD)
+
+Ensure the following tag is present in your HTML:
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+⸻
+
+♿ 9. ACCESSIBILITY
+	•	Add alt attributes to all meaningful images.
+	•	Ensure all interactive elements have visible focus indicators.
+	•	Maintain contrast ratios and prevent text from being hidden or overlapped.
+
+⸻
+
+Once these changes are applied, please test the site on screen widths ranging from 320px to 480px. Do not let any of these mobile-specific styles or overrides affect larger breakpoints.
